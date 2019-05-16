@@ -31,6 +31,8 @@ public class StudentController {
         return "result";
     }
 
+
+
 //    @RequestMapping(value = "/look",method = RequestMethod.GET)
 //    public String look(@ModelAttribute("SpringWeb")Student student, Model model){
 //        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
