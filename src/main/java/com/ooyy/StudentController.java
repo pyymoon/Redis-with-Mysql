@@ -1,5 +1,6 @@
 package com.ooyy;
 import com.ooyy.jdbc.DataBaseOperator;
+import com.ooyy.jedis.JedisController;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -19,14 +20,28 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/addStudent",method = RequestMethod.POST)
-    public String addStudent(@ModelAttribute("SpringWeb")Student student, ModelMap model){
-        model.addAttribute("name",student.getName());
-        model.addAttribute("age",student.getAge());
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-        DataBaseOperator dbo = (DataBaseOperator) context.getBean("student");
-        dbo.create(student);
+//    public String addStudent(@ModelAttribute("SpringWeb")Student student, ModelMap model){
+//        model.addAttribute("name",student.getName());
+//        model.addAttribute("age",student.getAge());
+//        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+//        DataBaseOperator dbo = (DataBaseOperator) context.getBean("student");
+//        dbo.create(student);
+//
+//        model.addAttribute("id",dbo.getId(student));
+//        ((ConfigurableApplicationContext)context).close();
+//        return "result";
+//    }
 
-        model.addAttribute("id",dbo.getId(student));
+        public String addStudent(@ModelAttribute("SpringWeb")Student student, ModelMap model){
+        model.addAttribute("name",student.getName());
+        model.addAttribute("addr",student.getAddr());
+        model.addAttribute("age",student.getAge());
+//        model.addAttribute("id",student.getId());
+        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        JedisController jc = (JedisController) context.getBean("student");
+        jc.create(student);
+
+//        model.addAttribute("id",dbo.getId(student));
         ((ConfigurableApplicationContext)context).close();
         return "result";
     }

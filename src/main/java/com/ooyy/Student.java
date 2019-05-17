@@ -5,6 +5,8 @@ public class Student {
     private Integer age;
     private String name;
 
+    private String addr;
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -17,6 +19,10 @@ public class Student {
         this.age = age;
     }
 
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
     public Integer getAge() {
         return age;
     }
@@ -27,5 +33,9 @@ public class Student {
 
     public Integer getId() {
         return id;
+    }
+
+    public String getAddr() {
+        return addr;
     }
 }
