@@ -9,12 +9,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JedisController {
-    private DataBaseOperator dataBaseOperator;
-
     @Autowired
-    public void setDataBaseOperator(DataBaseOperator dataBaseOperator) {
-        this.dataBaseOperator = dataBaseOperator;
-    }
+    private DataBaseOperator dataBaseOperator;
+    @Autowired
+    private Jedis jedis;
+//    @Autowired
+//    public void setDataBaseOperator(DataBaseOperator dataBaseOperator) {
+//        this.dataBaseOperator = dataBaseOperator;
+//    }
 
     public void create(Student student) {
         Jedis jedis = new Jedis("localhost");

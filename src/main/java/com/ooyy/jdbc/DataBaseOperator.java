@@ -1,7 +1,6 @@
 package com.ooyy.jdbc;
 
-import com.ooyy.jedis.JedisController;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
+
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 
 import java.util.HashMap;
@@ -53,11 +52,11 @@ public class DataBaseOperator extends NamedParameterJdbcDaoSupport {
     public Integer getId(Student student){
 //        jc.create();
 
-        String SQL = "select id from student where name=? and age=?";
+        String SQL = "select id from student where name=?";
         String name = student.getName();
 //        String addr = student.getAddr();
         Integer age = student.getAge();
-        Integer id = getJdbcTemplate().queryForObject(SQL,new Object[]{name,age},Integer.class);
+        Integer id = getJdbcTemplate().queryForObject(SQL,new Object[]{name},Integer.class);
 //        Integer id = getJdbcTemplate().queryForObjec
         return id;
     }
